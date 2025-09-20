@@ -1,0 +1,210 @@
+/* --- Basic Setup & Variables --- */
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --success-color: #28a745;
+    --light-gray-color: #f8f9fa;
+    --dark-gray-color: #343a40;
+    --text-color: #495057;
+    --border-color: #dee2e6;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--light-gray-color);
+    color: var(--text-color);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+/* --- Form Wizard Container --- */
+.form-wizard-container {
+    background-color: #ffffff;
+    padding: 2.5rem 3rem;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+}
+
+.form-wizard-container h2 {
+    color: var(--dark-gray-color);
+    margin-bottom: 0.5rem;
+}
+
+.form-wizard-container p {
+    margin-bottom: 2rem;
+    color: var(--secondary-color);
+}
+
+.form-wizard-container h3 {
+    text-align: left;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+.form-wizard-container h3 i {
+    margin-right: 0.75rem;
+}
+
+/* --- Stepper / Progress Bar --- */
+.stepper-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+}
+
+.stepper-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1; 
+    color: var(--secondary-color);
+}
+
+.stepper-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+     top: 20px;
+    left: 42%;
+    width: 100%;
+    height: 3px;
+    background-color: var(--border-color);
+    z-index: 0;
+}
+
+.step-counter {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 3px solid var(--border-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    font-size: 1.2rem;
+    transition: all 0.4s ease;
+    z-index: 1; 
+}
+
+.step-name {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.stepper-item.completed .step-counter {
+    border-color: var(--success-color);
+    background-color: var(--success-color);
+    color: #fff;
+}
+.stepper-item.completed .step-name {
+    color: var(--text-color);
+}
+.stepper-item.completed::after {
+    background-color: var(--success-color);
+}
+
+.stepper-item.active .step-counter {
+    border-color: var(--primary-color);
+    background-color: var(--primary-color);
+    color: #fff;
+}
+.stepper-item.active .step-name {
+    color: var(--primary-color);
+}
+
+
+/* --- Form Phases & Inputs --- */
+.form-phase {
+    display: none;
+}
+
+.form-phase.active {
+    display: block;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    text-align: left;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+/* --- Navigation Buttons --- */
+.form-navigation {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: #fff;
+}
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+#submitBtn {
+    display: none; /* Hidden by default */
+}
